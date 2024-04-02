@@ -1,10 +1,12 @@
 package cmd
 
 import (
-	"go-cli-skeleton/internals/customer"
+	"go-cli-skeleton/core"
+	customer "go-cli-skeleton/internals/customers"
 	"log"
 	"net/http"
 
+	"github.com/go-chi/chi/v5"
 	"github.com/urfave/cli/v2"
 )
 
@@ -13,7 +15,11 @@ func ServeAPICommand() *cli.Command {
 		Name:  "serve-api",
 		Usage: "Start the REST API server",
 		Action: func(c *cli.Context) error {
-			router := customer.SetupRouter() // Set up your Chi router in handler.SetupRouter()
+			db := core.InitDatabase()
+			customer.Seeder(db)
+			router := chi.NewRouter()
+
+			router.Mount("/customers", customer.SetupRouter())
 
 			server := &http.Server{
 				Addr:    ":8080", // Set your desired port

@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"go-cli-skeleton/internals/customer/models"
+	"go-cli-skeleton/internals/customers/models"
 	"reflect"
 	"testing"
 )
@@ -9,8 +9,8 @@ import (
 func TestItemUsecase_GetAllItems(t *testing.T) {
 	tests := []struct {
 		name    string
-		uc      *ItemUsecase
-		want    []models.Item
+		uc      *CustomerUseCase
+		want    []models.Customers
 		wantErr bool
 	}{
 		// TODO: Add test cases.
