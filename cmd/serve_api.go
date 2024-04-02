@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"go-cli-skeleton/internals/yourmodule"
+	"go-cli-skeleton/internals/customer"
 	"log"
 	"net/http"
 
@@ -13,7 +13,7 @@ func ServeAPICommand() *cli.Command {
 		Name:  "serve-api",
 		Usage: "Start the REST API server",
 		Action: func(c *cli.Context) error {
-			router := yourmodule.SetupRouter() // Set up your Chi router in handler.SetupRouter()
+			router := customer.SetupRouter() // Set up your Chi router in handler.SetupRouter()
 
 			server := &http.Server{
 				Addr:    ":8080", // Set your desired port

@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"go-cli-skeleton/internals/yourmodule/models"
+	"go-cli-skeleton/internals/customer/models"
 	"reflect"
 	"testing"
 )
