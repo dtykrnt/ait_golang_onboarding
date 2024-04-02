@@ -1,4 +1,4 @@
-package yourmodule
+package customer
 
 import (
 	"net/http"

@@ -1,8 +1,6 @@
 package usecase
 
-import (
-	"go-cli-skeleton/internals/yourmodule/models"
-)
+import "go-cli-skeleton/internals/customer/models"
 
 type ItemUsecase struct {
 	// Define dependencies as needed
