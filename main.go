@@ -13,6 +13,7 @@ func main() {
 		Name:  "YourApp",
 		Usage: "Your application description",
 		Commands: []*cli.Command{
+			cmd.ServeCustomerAPICommand(),
 			cmd.ServeAPICommand(),
 			{
 				Name:  "start-worker",

@@ -1,18 +1,37 @@
 package usecase
 
-import "go-cli-skeleton/internals/customers/models"
+import (
+	"go-cli-skeleton/internals/customers/models"
+	"go-cli-skeleton/internals/customers/repositories"
+)
 
 type CustomerUseCase struct {
-	// Define dependencies as needed
+	repository repositories.ICustomerRepository
 }
 
-func NewCustomerUsecase() *CustomerUseCase {
-	return &CustomerUseCase{}
+type ICustomerUseCase interface {
+	GetAll() ([]*models.Customers, error)
+	GetByID(id uint) (*models.Customers, error)
 }
 
-func (uc *CustomerUseCase) GetAllItems() ([]models.Customers, error) {
-	// Implement business logic to fetch all items
-	return []models.Customers{}, nil
+func NewCustomerUsecase(repository repositories.ICustomerRepository) ICustomerUseCase {
+	return &CustomerUseCase{
+		repository: repository,
+	}
 }
 
-// Implement other usecase methods for CRUD operations
+func (u *CustomerUseCase) GetAll() ([]*models.Customers, error) {
+	customers, err := u.repository.GetAll()
+	if err != nil {
+		return nil, err
+	}
+	return customers, nil
+}
+
+func (u *CustomerUseCase) GetByID(id uint) (*models.Customers, error) {
+	customer, err := u.repository.GetByID(id)
+	if err != nil {
+		return nil, err
+	}
+	return customer, nil
+}
